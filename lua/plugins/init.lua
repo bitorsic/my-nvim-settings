@@ -41,17 +41,28 @@ return {
       })
 
       -- Keybindings
-      vim.keymap.set("n", "<leader>sr", function()
+      vim.keymap.set("n", "<leader>ss", function()
         resession.save(vim.fn.input("Session name: "))
       end, { desc = "Save Session" })
 
-      vim.keymap.set("n", "<leader>sl", function()
-        resession.load(vim.fn.input("Session name: "))
-      end, { desc = "Load Session" })
+      vim.keymap.set("n", "<leader>sd", function()
+        local sessions = resession.list()
+
+        if #sessions == 0 then
+          vim.notify("No sessions found", vim.log.levels.INFO)
+          return
+        end
+
+        vim.ui.select(sessions, { prompt = "Select session to delete:" }, function(choice)
+          if choice then
+            resession.delete(choice)
+          end
+        end)
+      end, { desc = "Delete Session" })
 
       vim.keymap.set("n", "<leader>sf", function()
         resession.load()
-      end, { desc = "Load Session (from list)" })
+      end, { desc = "Load Session" })
     end,
   },
 
