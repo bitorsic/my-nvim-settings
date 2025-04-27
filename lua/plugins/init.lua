@@ -65,6 +65,14 @@ return {
       end, { desc = "Load Session" })
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      completion = {
+        autocomplete = false,
+      },
+    },
+  },
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
