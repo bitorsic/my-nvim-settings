@@ -65,14 +65,27 @@ return {
       end, { desc = "Load Session" })
     end,
   },
+
   {
-    "hrsh7th/nvim-cmp",
+    "nvim-tree/nvim-tree.lua",
     opts = {
-      completion = {
-        autocomplete = false,
+      git = {
+        enable = true,
+        ignore = false, -- <- Don't hide .gitignore'd files
+      },
+      filters = {
+        dotfiles = false, -- Optional: show dotfiles too
       },
     },
-  },
+  }
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = {
+  --     completion = {
+  --       autocomplete = false,
+  --     },
+  --   },
+  -- },
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",

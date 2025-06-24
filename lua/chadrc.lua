@@ -32,6 +32,12 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})
 -- M.nvdash = { load_on_startup = true }
 -- M.ui = {
 --       tabufline = {
